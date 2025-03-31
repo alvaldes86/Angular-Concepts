@@ -1,5 +1,9 @@
+
+<h2>Mini Counter App. Hands on data binding. Move to its own page once learn routing</h2>
 <div class="container">
+
   <div class="box">
+    <h6>Counter using event binding</h6>
     <img class="img" [src]="imageUrl" alt="">
 
     <div class="row m-5 ">
@@ -12,7 +16,23 @@
         <p>{{dislikeCounter}}</p>
       </div>
     </div>
+  </div>
 
+  <div class="box">
+    <h6>Counter using two-way data binding [(ngModel)]</h6>
+    <img class="img" [src]="imageUrl" alt="">
+
+    <div class="row m-5 ">
+      <label class="text-white"> The increment amount is not {{incrementAmount}}</label>
+      <input class="m-2 w-25" type="number" [(ngModel)] = "incrementAmount">
+
+      <div class="row">
+        <button class="col m-3 btn btn-primary" (click)="increment()">+</button>
+
+        <button class="col m-3 btn btn-primary" (click)="decrement()">-</button>
+      </div>
+      <p>Counter: {{counter}}</p>
+    </div>
   </div>
 
 

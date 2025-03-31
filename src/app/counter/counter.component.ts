@@ -22,4 +22,16 @@ export class CounterComponent {
   public incrementDislikeCounter(): void {
     this.dislikeCounter++;
   }
+
+  counter = 0;
+
+  incrementAmount = 2;
+
+  public increment(): void {
+    this.counter += this.incrementAmount;
+  }
+
+  public decrement(): void {
+    this.counter -= this.incrementAmount;
+  }
 }

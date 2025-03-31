@@ -5,9 +5,9 @@
 body{
   background-color: rgb(22, 22, 22) !important;
 }
-h1{
-  color: rgb(209, 209, 209) !important;
+h1, h2, h3, h4, h5, h6, li, a{
+  color: white !important;
 }
 p{
-  color: rgb(209, 209, 209) !important;
+  color: white !important;
 }
