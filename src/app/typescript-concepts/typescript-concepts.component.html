@@ -1,0 +1,109 @@
+<section class="container mb-5">
+  <h6 class="text-white">Interpolation is best suited for displaying text content.</h6>
+  <div class="box">
+    <p>Simple interpolation</p>
+    <button class="btn btn-primary" (click)="increment()">Counter</button>
+    <p>This is an example of interpolations {{counter}}</p>
+  </div>
+
+  <div class="box">
+    <p>advance Interpolation to perform calculations</p>
+    <p>Adding two properties: {{number1 + number2}}</p>
+  </div>
+
+  <div class="box">
+    <p>Interpolation to access object members</p>
+    <!--Use safe navegation operator ?. to access objects properties that might be null-->
+    <p>{{cars?.brand}}</p>
+  </div>
+
+  <div class="box">
+    <p>Interpolation to call a method</p>
+    <p>{{printHelllo()}}</p>
+  </div>
+
+</section>
+
+<!-- property binding -->
+<section class="container mb-5">
+  <h6 class="text-white">Property binding is better for setting elements properties like src attribute of an img tag, disabled attribute of a button tag</h6>
+  <div class="box">
+    <p>Property binding. Attribute values</p>
+    <img [src]="imageUrl" alt="image">
+  </div>
+
+  <div class="box">
+    <p>Property binding. Set value of disable property</p>
+    <button class="btn btn-primary" disabled="true">Click me</button>
+  </div>
+
+  <div class="box">
+    <p>Property binding. Dinamically adding CSS class</p>
+    <p [class.textFont]="isSpecialFont">Changing element's font</p>
+  </div>
+
+  <div class="box">
+    <p>Setting ARIA attributes for accessibility</p>
+    <button class="btn btn-primary" [attr.aria-label]="buttonLabel">Click me</button>
+
+    <br>
+    <p>Key differences to keep in mind</p>
+    <li style="color: aliceblue;">Property binding affects the element's property in the DOM.</li>
+    <li style="color: aliceblue;">Attribute binding (using attr.) affects the element's attribute in the HTML markup.</li>
+    </div>
+
+</section>
+
+<!-- event binding -->
+ <section class="container mb-5">
+  <h6 class="text-white">Event binding</h6>
+
+  <div class="box">
+    <p>Event binding</p>
+    <button class="btn btn-primary" (click)="toggleVisibility()">toggle visibility</button>
+
+    <div *ngIf="isVisible">
+      <p>I
+        am now visible</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p>Accessing Event Data: The $event Object - Getting Details About the Interaction</p>
+
+    <input type="text" (keyup)="updateInputValue($event)">
+
+    <p>Input value: {{inputValue}}</p>
+  </div>
+
+  <div class="box">
+    <p>Two way binding: [(ngModel)] for Input fields - the magic of synchronization</p>
+    <p>[(ngModel)] is a shorthand for combining property and event biding</p>
+
+    <input type="text" [(ngModel)]="propertyEvent">
+    <p>Input value{{propertyEvent}}</p>
+
+    <br>
+    <ul style="color: aliceblue;">Common use cases for [(ngModel)]
+      <li style="color: aliceblue;">Text Input Fields: Capturing user input in text fields.</li>
+      <li style="color: aliceblue;">Textarea: Handling multi-line text input</li>
+      <li style="color: aliceblue;">Select boxes: Capturing user selections from dropdown menus</li>
+      <li style="color: aliceblue;">Checkboxes: Capturing boolean values from checkboxes</li>
+      <li style="color: aliceblue;">Radio Buttons: Capturing selections from radio button groups.</li>
+    </ul>
+
+  </div>
+
+  <div class="box">
+    <p>Binding to an Object property</p>
+
+    <label >First Name:</label>
+    <input type="text" [(ngModel)]="user.firstName">
+
+    <label >Last Name:</label>
+    <input type="text" [(ngModel)]="user.lastName">
+    <br>
+    <p>Full Name: {{user.firstName}} {{user.lastName}}</p>
+  </div>
+ </section>
+

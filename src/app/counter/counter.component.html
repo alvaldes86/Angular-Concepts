@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="box">
+    <img class="img" [src]="imageUrl" alt="">
+
+    <div class="row m-5 ">
+      <div class="col">
+        <button class="btn btn-primary" (click)="incrementLikeCounter()">Like</button>
+        <p>{{likeCounter}}</p>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="incrementDislikeCounter()">Dislike</button>
+        <p>{{dislikeCounter}}</p>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

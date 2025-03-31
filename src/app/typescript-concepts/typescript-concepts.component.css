@@ -1,0 +1,21 @@
+.box{
+  margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 405px;
+    padding: 30px;
+    background: #262727;
+}
+.red{
+  color: rgb(230, 9, 9);
+}
+.green{
+  color: rgb(20, 240, 12);
+}
+
+.textFont{
+  font-family: fantasy;
+}
