@@ -1,124 +1,338 @@
-<h4>Chapter 5: Data Binding</h4>
-<!-- interpolation -->
-<section class="container mb-5">
-  <h6 class="text-white">Interpolation is best suited for displaying text content.</h6>
-  <div class="box">
-    <p>Simple interpolation</p>
-    <button class="btn btn-primary" (click)="increment()">Counter</button>
-    <p>This is an example of interpolations {{counter}}</p>
-  </div>
 
-  <div class="box">
-    <p>advance Interpolation to perform calculations</p>
-    <p>Adding two properties: {{number1 + number2}}</p>
-  </div>
 
-  <div class="box">
-    <p>Interpolation to access object members</p>
-    <!--Use safe navegation operator ?. to access objects properties that might be null-->
-    <p>{{cars?.brand}}</p>
-  </div>
 
-  <div class="box">
-    <p>Interpolation to call a method</p>
-    <p>{{printHelllo()}}</p>
-  </div>
 
-</section>
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-4">
+      <nav class="nad-flex flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <ul>
+          <li>Chapter 5: Data Binding - Interpolation is best suited for displaying text content.</li>
+          <li><a class="nav-link"  (click)="showSelectedMenuItem('simple')">Simple Interpolation</a></li>
+          <li><a class="nav-link"  (click)="showSelectedMenuItem('advance')">advance Interpolation to perform calculations</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('accessObject')">Interpolation to access object members</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('callMethod')">Interpolation to call a method</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('attributeValue')">Property binding. Attribute values</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('disableProperty')">Property binding. Set value of disable property</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('addCSSclass')">Property binding. Dinamically adding CSS class</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('setAria')">Setting ARIA attributes for accessibility</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('eventbinding')">Event binding</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('eventObject')">Accessing Event Data: The $event Object - Getting Details About the Interaction</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('ngModel')">Two way binding: [(ngModel)] for Input fields - the magic of synchronization</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('bidingObjectProp')">Binding to an Object property</a></li>
+          <li>Chapter 6: Directives</li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('ngIf')">*ngIf: Conditional Rendering - Controlling Visibility with Precision</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('errorMessage')">Displaying Error Messages: Show an error message only if there is an error.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('loadingIndicator')">Loading Indicators: Show a loading indicator while data is being fetched from a server.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('emptyState')">Empty State Messages: Display a message when a list is empty.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('elseBlock')">The else Block: Providing an Alternative View</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('thenBlock')">The then Block: Less Common, But Still Useful</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('ngFor')">*ngFor: Looping Through Data - The Key to Dynamic Collections</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('tableRows')">Creating a Table of Data: Generate table rows from an array of data.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('navMenus')">Creating a Navigation Menu: Generate navigation links from an array of menu items.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('loopData')">*ngFor: Looping Through Data - The Key to Dynamic Collections</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('tableData')">Creating a Table of Data: Generate table rows from an array of data.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('lookNavMenu')">Creating a Navigation Menu: Generate navigation links from an array of menu items.</a></li>
+        </ul>
 
-<!-- property binding -->
-<section class="container mb-5">
-  <h6 class="text-white">Property binding is better for setting elements properties like src attribute of an img tag, disabled attribute of a button tag</h6>
-  <div class="box">
-    <p>Property binding. Attribute values</p>
-    <img [src]="imageUrl" alt="image">
-  </div>
-
-  <div class="box">
-    <p>Property binding. Set value of disable property</p>
-    <button class="btn btn-primary" disabled="true">Click me</button>
-  </div>
-
-  <div class="box">
-    <p>Property binding. Dinamically adding CSS class</p>
-    <p [class.textFont]="isSpecialFont">Changing element's font</p>
-  </div>
-
-  <div class="box">
-    <p>Setting ARIA attributes for accessibility</p>
-    <button class="btn btn-primary" [attr.aria-label]="buttonLabel">Click me</button>
-
-    <br>
-    <p>Key differences to keep in mind</p>
-    <li style="color: aliceblue;">Property binding affects the element's property in the DOM.</li>
-    <li style="color: aliceblue;">Attribute binding (using attr.) affects the element's attribute in the HTML markup.</li>
+      </nav>
     </div>
+    <div class="col-8">
 
-</section>
+      <!-- interpolation -->
+      <section class="container">
+        <div class="box" *ngIf="menuItem === 'simple'" [class.links-active]="isActive">
+          <p >Simple interpolation</p>
+          <button class="btn btn-primary" (click)="increment()">Counter</button>
+          <p>This is an example of interpolations {{counter}}</p>
+        </div>
 
-<!-- event binding -->
- <section class="container mb-5">
-  <h6 class="text-white">Event binding</h6>
+        <div class="box" *ngIf="menuItem === 'advance'">
+          <p >advance Interpolation to perform calculations</p>
+          <p>Adding two properties: {{number1 + number2}}</p>
+        </div>
 
-  <div class="box">
-    <p>Event binding</p>
-    <button class="btn btn-primary" (click)="toggleVisibility()">toggle visibility</button>
+        <div class="box" *ngIf="menuItem === 'accessObject'">
+          <p>Interpolation to access object members</p>
+          <!--Use safe navegation operator ?. to access objects properties that might be null-->
+          <p>{{cars?.brand}}</p>
+        </div>
 
-    <div *ngIf="isVisible">
-      <p>I
-        am now visible</p>
+        <div class="box" *ngIf="menuItem === 'callMethod'">
+          <p>Interpolation to call a method</p>
+          <p>{{printHelllo()}}</p>
+        </div>
+
+      </section>
+
+      <!-- property binding -->
+      <section class="container">
+        <div class="box" *ngIf="menuItem === 'attributeValue'">
+          <h6 class="text-white">Property binding is better for setting elements properties like src attribute of an img tag, disabled attribute of a button tag</h6>
+          <p>Property binding. Attribute values</p>
+          <img [src]="imageUrl" alt="image">
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'disableProperty'">
+          <p>Property binding. Set value of disable property</p>
+          <button class="btn btn-primary" disabled="true">Click me</button>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'addCSSclass'">
+          <p>Property binding. Dinamically adding CSS class</p>
+          <p [class.textFont]="isSpecialFont">Changing element's font</p>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'setAria'">
+          <p>Setting ARIA attributes for accessibility</p>
+          <button class="btn btn-primary" [attr.aria-label]="buttonLabel">Click me</button>
+
+          <br>
+          <p>Key differences to keep in mind</p>
+          <li style="color: aliceblue;">Property binding affects the element's property in the DOM.</li>
+          <li style="color: aliceblue;">Attribute binding (using attr.) affects the element's attribute in the HTML markup.</li>
+          </div>
+
+      </section>
+
+      <!-- event binding -->
+      <section class="container">
+
+        <div class="box " *ngIf="menuItem === 'eventbinding'">
+          <h6 class="text-white">Event binding</h6>
+          <p>Event binding</p>
+          <button class="btn btn-primary" (click)="toggleVisibility()">toggle visibility</button>
+
+          <div *ngIf="isVisible">
+            <p>I
+              am now visible</p>
+          </div>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'eventObject'">
+          <p>Accessing Event Data: The $event Object - Getting Details About the Interaction</p>
+
+          <input type="text" (keyup)="updateInputValue($event)">
+
+          <p>Input value: {{inputValue}}</p>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'ngModel'">
+          <p>Two way binding: [(ngModel)] for Input fields - the magic of synchronization</p>
+          <p>[(ngModel)] is a shorthand for combining property and event biding</p>
+
+          <input type="text" [(ngModel)]="propertyEvent">
+          <p>Input value{{propertyEvent}}</p>
+
+          <br>
+          <ul style="color: aliceblue;">Common use cases for [(ngModel)]
+            <li style="color: aliceblue;">Text Input Fields: Capturing user input in text fields.</li>
+            <li style="color: aliceblue;">Textarea: Handling multi-line text input</li>
+            <li style="color: aliceblue;">Select boxes: Capturing user selections from dropdown menus</li>
+            <li style="color: aliceblue;">Checkboxes: Capturing boolean values from checkboxes</li>
+            <li style="color: aliceblue;">Radio Buttons: Capturing selections from radio button groups.</li>
+          </ul>
+
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'bidingObjectProp'">
+          <p>Binding to an Object property</p>
+
+          <label >First Name:</label>
+          <input type="text" [(ngModel)]="user.firstName">
+
+          <label >Last Name:</label>
+          <input type="text" [(ngModel)]="user.lastName">
+          <br>
+          <p>Full Name: {{user.firstName}} {{user.lastName}}</p>
+        </div>
+      </section>
+
+      <!-- directives -->
+      <h4></h4>
+      <section class="container">
+
+        <div class="box" *ngIf="menuItem === 'ngIf'">
+          <h6>*ngIf: Conditional Rendering - Controlling Visibility with Precision</h6>
+          <h6>Common Use cases</h6>
+          <li>Displaying Content Based on User Authentication: Show different content to logged-in users versus guests.</li>
+
+          <form *ngIf="!isLoggedin" class="row-2 mt-5 g-3">
+            <p>Please log in</p>
+            <div class="col mt-1">
+              <label for="inputPassword2" class="visually-hidden">Password</label>
+              <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+            <div class="col mt-3">
+              <button type="submit" class="btn btn-primary mb-3">Login</button>
+            </div>
+          </form>
+
+          <div *ngIf="isLoggedin" class="card mt-5" style="width: auto; height: 30px; background-color: #0d6efd;">
+            <p>Welcome User</p>
+          </div>
+
+          <p>Avoid using seperate *ngif directives to display content based on both true and false conditions. use the else block instead</p>
+          <p>See below</p>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'errorMessage'">
+          <p>Displaying Error Messages: Show an error message only if there is an error.</p>
+
+          <div class="card d-flex justify-content-center align-items-center">
+            <p *ngIf="errorMessage" class="text-danger ">Error message</p>
+          </div>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'loadingIndicator'">
+          <p>Loading Indicators: Show a loading indicator while data is being fetched from a server.</p>
+
+          <div *ngIf="isLoading">
+            <p>Loading...</p>
+          </div>
+
+          <div *ngIf="!isLoading">
+            <p>Data: {{ data }}</p>
+          </div>
+
+          <p>note: Avoid using *ngIf to display content base on true or false conditions. CSS might be a better option</p>
+
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'emptyState'">
+          <p>Empty State Messages: Display a message when a list is empty.</p>
+
+          <div *ngIf="numbers.length === 0">
+            <p>No items found</p>
+          </div>
+
+          <div *ngIf="numbers.length > 0">
+            <li *ngFor="let item of numbers">{{item}}</li>
+          </div>
+
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'elseBlock'">
+          <p>The else Block: Providing an Alternative View</p>
+
+          <div *ngIf="isLoggedin; else logOutBlock">
+            <button class="btn btn-primary">Welcome user</button>
+          </div>
+
+          <ng-template #logOutBlock>
+            <p class="card">Please log in</p>
+          </ng-template>
+
+          <ng-template #elseBlock>Alternative Content</ng-template>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'thenBlock'">
+          <p>The then Block: Less Common, But Still Useful</p>
+
+          <div *ngIf="isLoggedin; then thenBlock else logOutBlock">
+            <button class="btn btn-primary">Welcome user</button>
+          </div>
+
+          <ng-template #logOutBlock>
+            <p class="card">Please log in</p>
+          </ng-template>
+
+          <ng-template #thenBlock>if condition is true Then Block displays</ng-template>
+          <ng-template #elseBlock>Else Block displays</ng-template>
+
+        </div>
+      </section>
+
+      <section class="container">
+
+
+        <div class="box" *ngIf="menuItem === 'ngFor'">
+          <h6>*ngFor: Looping Through Data - The Key to Dynamic Collections</h6>
+
+          <h6>Common Use cases</h6>
+          <p>Displaying a List of Products: Create a list of product cards from an array of product data.</p>
+
+          <div class="product-card" *ngFor="let product of products">
+            <li>{{product.name}}</li>
+            <li>{{product.description}}</li>
+            <li>{{product.price}}</li>
+          </div>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'tableRows'">
+          <p>Creating a Table of Data: Generate table rows from an array of data.</p>
+
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'navMenus'">
+          <p>Creating a Navigation Menu: Generate navigation links from an array of menu items.</p>
+
+
+        </div>
+      </section>
+
+      <section class="container">
+
+
+        <div class="box" *ngIf="menuItem === 'loopData'">
+          <h6>*ngFor: Looping Through Data - The Key to Dynamic Collections</h6>
+
+          <h6>Common Use cases</h6>
+          <p>Displaying a List of Products: Create a list of product cards from an array of product data.</p>
+
+          <div class="product-card" *ngFor="let product of products">
+            <li>{{product.name}}</li>
+            <li>{{product.description}}</li>
+            <li>{{product.price}}</li>
+          </div>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'tableData'">
+          <p>Creating a Table of Data: Generate table rows from an array of data.</p>
+
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'lookNavMenu'">
+          <p>Creating a Navigation Menu: Generate navigation links from an array of menu items.</p>
+
+
+        </div>
+      </section>
+
     </div>
   </div>
-
-  <div class="box">
-    <p>Accessing Event Data: The $event Object - Getting Details About the Interaction</p>
-
-    <input type="text" (keyup)="updateInputValue($event)">
-
-    <p>Input value: {{inputValue}}</p>
-  </div>
-
-  <div class="box">
-    <p>Two way binding: [(ngModel)] for Input fields - the magic of synchronization</p>
-    <p>[(ngModel)] is a shorthand for combining property and event biding</p>
-
-    <input type="text" [(ngModel)]="propertyEvent">
-    <p>Input value{{propertyEvent}}</p>
-
-    <br>
-    <ul style="color: aliceblue;">Common use cases for [(ngModel)]
-      <li style="color: aliceblue;">Text Input Fields: Capturing user input in text fields.</li>
-      <li style="color: aliceblue;">Textarea: Handling multi-line text input</li>
-      <li style="color: aliceblue;">Select boxes: Capturing user selections from dropdown menus</li>
-      <li style="color: aliceblue;">Checkboxes: Capturing boolean values from checkboxes</li>
-      <li style="color: aliceblue;">Radio Buttons: Capturing selections from radio button groups.</li>
-    </ul>
-
-  </div>
-
-  <div class="box">
-    <p>Binding to an Object property</p>
-
-    <label >First Name:</label>
-    <input type="text" [(ngModel)]="user.firstName">
-
-    <label >Last Name:</label>
-    <input type="text" [(ngModel)]="user.lastName">
-    <br>
-    <p>Full Name: {{user.firstName}} {{user.lastName}}</p>
-  </div>
- </section>
-
- <!-- directives -->
- <h4>Chapter 6: Directives</h4>
- <section class="container mb-5">
-
-   <h6>*ngIf: Conditional Rendering - Controlling Visibility with Precision</h6>
-   <h6>Use cases</h6>
-
-  <div class="box">
-    <li>Displaying Content Based on User Authentication: Show different content to logged-in users versus guests.</li>
-  </div>
-
- </section>
-
+</div>

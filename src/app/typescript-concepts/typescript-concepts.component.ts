@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { empty } from 'rxjs';
 
 
 @Component({
@@ -40,7 +41,64 @@ export class TypescriptConceptsComponent {
     firstName: '',
     lastName: ''
   };
+
+  isLoggedin: boolean = false;
+
+  errorMessage:string = "Error: Something went wrong!";
+
+  isLoading: boolean = false;
+
+  data: string = "Display some records";
+
+  numbers: number[] = [];
+  names: string[] = ['Alain', 'John', 'Doe', 'Jane'];
+
+  //declare object using type anotation
+  products: { name: string; description: string; price: number }[] = [
+    { name: "Laptop", description: "A powerful gaming laptop", price: 1500 },
+    { name: "Smartphone", description: "A latest-gen smartphone", price: 999 },
+    { name: "Headphones", description: "Noise-canceling over-ear headphones", price: 199 }
+  ];
+
+
+
+  //using an interface to define the type of the object
+  // interface Product {
+  //   name: string;
+  //   description: string;
+  //   price: number;
+  // }
+
+  // const products: Product[] = [
+  //   {
+  //     name: "Laptop",
+  //     description: "A powerful gaming laptop",
+  //     price: 1500
+  //   },
+  //   {
+  //     name: "Smartphone",
+  //     description: "A latest-gen smartphone with an amazing camera",
+  //     price: 999
+  //   },
+  //   {
+  //     name: "Headphones",
+  //     description: "Noise-canceling over-ear headphones",
+  //     price: 199
+  //   }
+  // ];
+
+  menuItems = ['Home', 'About', 'Services', 'Contact', 'Blog'];
+
+
+  menuItem: string = 'simple';
   //methods
+
+  //display the corresponding menu item
+  public showSelectedMenuItem(element: string){
+    this.menuItem = element;
+  }
+
+
 public increment(): void {
   this.counter++;
 }
