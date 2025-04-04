@@ -33,6 +33,7 @@
           <li><a class="nav-link" (click)="showSelectedMenuItem('loopData')">*ngFor: Looping Through Data - The Key to Dynamic Collections</a></li>
           <li><a class="nav-link" (click)="showSelectedMenuItem('tableData')">Creating a Table of Data: Generate table rows from an array of data.</a></li>
           <li><a class="nav-link" (click)="showSelectedMenuItem('lookNavMenu')">Creating a Navigation Menu: Generate navigation links from an array of menu items.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('accessIndexFirst')">Accessing Index, First, Last, Even, and Odd: Getting More Context</a></li>
         </ul>
 
       </nav>
@@ -45,6 +46,7 @@
           <p >Simple interpolation</p>
           <button class="btn btn-primary" (click)="increment()">Counter</button>
           <p>This is an example of interpolations {{counter}}</p>
+
         </div>
 
         <div class="box" *ngIf="menuItem === 'advance'">
@@ -149,7 +151,6 @@
       </section>
 
       <!-- directives -->
-      <h4></h4>
       <section class="container">
 
         <div class="box" *ngIf="menuItem === 'ngIf'">
@@ -329,8 +330,22 @@
         <div class="box" *ngIf="menuItem === 'lookNavMenu'">
           <p>Creating a Navigation Menu: Generate navigation links from an array of menu items.</p>
 
-
+          <ul>
+            <li *ngFor="let element of menu" >
+              <a href="{{element.link}}">{{element.name}}</a>
+            </li>
+          </ul>
         </div>
+
+        <div class="box" *ngIf="menuItem === 'accessIndexFirst'">
+          <p>Accessing Index, First, Last, Even, and Odd: Getting More Context</p>
+
+          <ul>
+            <!--Styling list items based on index-->
+            <li *ngFor="let item of menuItems; let i = index" [class.even] = "i % 2===0" [class.odd] = "i % 2 !==0">{{item}}</li>
+          </ul>
+        </div>
+
       </section>
 
     </div>

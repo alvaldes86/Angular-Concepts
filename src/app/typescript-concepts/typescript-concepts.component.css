@@ -59,3 +59,11 @@ section{
   justify-content: center;
   align-items: center;
 }
+
+.even{
+  background-color: rgb(52, 107, 77);
+}
+
+.odd{
+  background-color: #682727;
+}

@@ -91,6 +91,14 @@ export class TypescriptConceptsComponent {
 
 
   menuItem: string = 'simple';
+
+  menu:{ name: string; link: string }[] = [
+    {name: 'Home', link: '/home'},
+    {name: 'About', link: '/about'},
+    {name: 'Services', link: '/services'}
+  ];
+
+
   //methods
 
   //display the corresponding menu item
