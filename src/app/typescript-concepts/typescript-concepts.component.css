@@ -9,11 +9,22 @@
     padding: 30px;
     background: #262727;
 }
+
+.box2{
+  background-color: #4e4e4e;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .red{
-  color: rgb(230, 9, 9);
+  color: rgb(230, 9, 9) !important;
 }
 .green{
-  color: rgb(20, 240, 12);
+  color: rgb(20, 240, 12) !important;
 }
 
 .textFont{
@@ -66,4 +77,16 @@ section{
 
 .odd{
   background-color: #682727;
+}
+
+.active{
+  background-color: #00d400;
+}
+
+.inactive{
+  background-color: #e01d03 !important;
+}
+
+.error{
+  border: solid 2px red;
 }

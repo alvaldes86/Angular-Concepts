@@ -34,6 +34,15 @@
           <li><a class="nav-link" (click)="showSelectedMenuItem('tableData')">Creating a Table of Data: Generate table rows from an array of data.</a></li>
           <li><a class="nav-link" (click)="showSelectedMenuItem('lookNavMenu')">Creating a Navigation Menu: Generate navigation links from an array of menu items.</a></li>
           <li><a class="nav-link" (click)="showSelectedMenuItem('accessIndexFirst')">Accessing Index, First, Last, Even, and Odd: Getting More Context</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('trackBy')">The trackBy Function</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('ngClass')">[ngClass]: Dynamic CSS Classes - Shaping the View with Style</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('addRemoveClass')">Add or remove a class based on a condition</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('errorMessage')">Displaying Validation Errors: Add an "error" class to an input field when it contains invalid data.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('listBasedStatus')">Styling List Items Based on Status</a></li>
+          <li>Chapter 7 Pipes</li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('pipes')">Pipes are simple functions that accept an input value and return a transformed output value.</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('currency')">CurrencyPipe: Formatting Currencies - Making Monetary Values Understandable</a></li>
+
         </ul>
 
       </nav>
@@ -93,7 +102,7 @@
           <p>Key differences to keep in mind</p>
           <li style="color: aliceblue;">Property binding affects the element's property in the DOM.</li>
           <li style="color: aliceblue;">Attribute binding (using attr.) affects the element's attribute in the HTML markup.</li>
-          </div>
+        </div>
 
       </section>
 
@@ -244,6 +253,7 @@
         </div>
       </section>
 
+      <!--*ngIf-->
       <section class="container">
 
 
@@ -289,8 +299,8 @@
         </div>
       </section>
 
+      <!--*ngFor-->
       <section class="container">
-
 
         <div class="box" *ngIf="menuItem === 'loopData'">
           <h6>*ngFor: Looping Through Data - The Key to Dynamic Collections</h6>
@@ -344,9 +354,86 @@
             <!--Styling list items based on index-->
             <li *ngFor="let item of menuItems; let i = index" [class.even] = "i % 2===0" [class.odd] = "i % 2 !==0">{{item}}</li>
           </ul>
+
+
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'trackBy'">
+          <p>To improve performance, you can use the trackBy function to tell Angular how to uniquely identify each item in the array. The trackBy function should return a unique identifier for each item.</p>
+          <p>By Using the trackBy Angular will not have to re-render each element if the list changes</p>
+
+          <ul>
+            <li *ngFor="let item of menu; trackBy: trackByFn">{{item.name}}</li>
+          </ul>
         </div>
 
       </section>
+
+      <!--*ngClass-->
+      <section>
+        <div class="box" *ngIf="menuItem === 'ngClass'">
+          <h6>[ngClass]: Dynamic CSS Classes - Shaping the View with Style</h6>
+          <p>Common Use cases</p>
+          <p>Highlighting Active Navigation Links: Add a "active" class to the currently selected navigation link.</p>
+
+
+          <!-- my-component.component.html -->
+           <ul>
+             <li><a routerLink="/home" [ngClass]="{ 'active': activeRoute === '/home' }">Home</a></li>
+             <li><a routerLink="/about" [ngClass]="{ 'active': activeRoute === '/about' }">About</a></li>
+             <li><a routerLink="/contact" [ngClass]="{ 'active': activeRoute === '/contact' }">Contact</a></li>
+           </ul>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'addRemoveClass'">
+          <p>Add or remove a class based on a condition</p>
+
+          <div class="box2" [ngClass]="{'active': isActive, 'inactive': !isActive}" (click)="toggleLi()">
+            <p>I am a box</p>
+          </div>
+
+        </div>
+
+        <div class="box"  *ngIf="menuItem === 'errorMessage'">
+          <p>Displaying Validation Errors: Add an "error" class to an input field when it contains invalid data.</p>
+
+          <input class="form-control" type="text" [(ngModel)]="email" [ngClass]="{'error': email ===''}">
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'listBasedStatus'">
+          <p>Styling List Items Based on Status: Apply different styles to list items based on their status (e.g., "completed," "pending," "in progress").</p>
+
+          <ul>
+            <li *ngFor="let item of shoppingList" [ngClass]="{'green': item.purchased === true, 'red': !item.purchased === true}">{{item.name}}</li>
+          </ul>
+
+
+        </div>
+      </section>
+
+      <!--Pipes -->
+
+      <section class="container">
+        <div class="box" *ngIf="menuItem === 'pipes'">
+          <h6>Chapter 7 Pipes</h6>
+          <p>Pipes are simple functions that accept an input value and return a transformed output value. They are used in Angular templates to format and transform data before it is displayed to the user.</p>
+
+          <p>Short Date: {{myDate | date:'short'}}</p>
+          <p>Medium Date: {{myDate | date:'medium'}}</p>
+          <p>Long Date: {{myDate | date:'long'}}</p>
+          <p>Custom format: {{myDate | date:'yyyy-mm-dd hh:mm:ss'}}</p>
+
+          <br>
+          <p>The DatePipe uses the user's local timezone by default. You can specify a different timezone by passing a timezone string as the third argument to the pipe:</p>
+
+          <p>Date in UTC: {{ myDate | date:'medium':'UTC' }}</p>
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'currency'">
+          <p>CurrencyPipe: Formatting Currencies - Making Monetary Values Understandable</p>
+        </div>
+      </section>
+
 
     </div>
   </div>

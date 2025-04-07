@@ -92,14 +92,37 @@ export class TypescriptConceptsComponent {
 
   menuItem: string = 'simple';
 
-  menu:{ name: string; link: string }[] = [
-    {name: 'Home', link: '/home'},
-    {name: 'About', link: '/about'},
-    {name: 'Services', link: '/services'}
+  menu:{ id: number; name: string; link: string }[] = [
+    {id: 1, name: 'Home', link: '/home'},
+    {id:2, name: 'About', link: '/about'},
+    {id: 3, name: 'Services', link: '/services'}
   ];
 
+  activeRoute: string = '/about';
+
+  isActive: boolean = false;
+
+  email:string = '';
+
+  shoppingList = [
+    { id: 1, name: 'Milk', quantity: 2, purchased: false },
+    { id: 2, name: 'Bread', quantity: 1, purchased: false },
+    { id: 3, name: 'Eggs', quantity: 12, purchased: true },
+    { id: 4, name: 'Butter', quantity: 1, purchased: false }
+  ]
+
+  myDate: Date = new Date(); // current date and time
 
   //methods
+
+  toggleLi(): void {
+    this.isActive = !this.isActive; // toggle the active state
+  }
+//to improve performance and do not re render element in the dom
+trackByFn(index: number, item: any): number{
+  return item.id; // or return index; if you don't have an id property
+}
+
 
   //display the corresponding menu item
   public showSelectedMenuItem(element: string){
