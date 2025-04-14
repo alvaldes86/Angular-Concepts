@@ -8,6 +8,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TypescriptConceptsComponent } from './typescript-concepts/typescript-concepts.component';
 import { CounterComponent } from './counter/counter.component';
 import { ConnectApiComponent } from './connect-api/connect-api.component';
+import { ChildComponent } from './child/child.component';
+import { CParentComponent } from './c-parent/c-parent.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ConnectApiComponent } from './connect-api/connect-api.component';
     NavBarComponent,
     TypescriptConceptsComponent,
     CounterComponent,
-    ConnectApiComponent
+    ConnectApiComponent,
+    ChildComponent,
+    CParentComponent
   ],
   imports: [
     BrowserModule,

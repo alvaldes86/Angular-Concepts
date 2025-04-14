@@ -1,0 +1,18 @@
+<p>c-parent works!</p>
+<app-child [message]="'This message is coming from the parent component'"></app-child>
+
+<p>Passing Different Data Types: You can pass data of any type to a child component using Input(), including:</p>
+<p>Strings</p>
+<p>Numbers</p>
+<p>Boolean</p>
+<p>Arrays</p>
+<p>Objects</p>
+<p>Functions (though this is less common and should be used carefully)</p>
+
+<div>
+  <h6>Product List</h6>
+  <div *ngFor="let product of products" class="product-item">
+    <app-child [productInfo]="product"></app-child>
+  </div>
+</div>
+
