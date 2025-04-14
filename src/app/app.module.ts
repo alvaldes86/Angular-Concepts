@@ -7,18 +7,21 @@ import { UserComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TypescriptConceptsComponent } from './typescript-concepts/typescript-concepts.component';
 import { CounterComponent } from './counter/counter.component';
+import { ConnectApiComponent } from './connect-api/connect-api.component';
 
 @NgModule({
   declarations: [
     UserComponent,
     NavBarComponent,
     TypescriptConceptsComponent,
-    CounterComponent
+    CounterComponent,
+    ConnectApiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule  //need to import this modules to use ngModel directive
+
   ],
   providers: [
     provideClientHydration(withEventReplay())

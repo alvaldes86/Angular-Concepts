@@ -42,6 +42,11 @@
           <li>Chapter 7 Pipes</li>
           <li><a class="nav-link" (click)="showSelectedMenuItem('pipes')">Pipes are simple functions that accept an input value and return a transformed output value.</a></li>
           <li><a class="nav-link" (click)="showSelectedMenuItem('currency')">CurrencyPipe: Formatting Currencies - Making Monetary Values Understandable</a></li>
+          <li>Chapter 8 User input and Forms</li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('ngSubmit')">8.3 Handling Form Submission: Capturing and Processing User Data</a></li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('inputValidation')">Adding Validation Attributes to a Form</a></li>
+          <li>Chapter 9 Component Communication</li>
+          <li><a class="nav-link" (click)="showSelectedMenuItem('inputDecorator')">Passing Data to Child Components - The One-Way Flow of Information</a></li>
 
         </ul>
 
@@ -412,7 +417,6 @@
       </section>
 
       <!--Pipes -->
-
       <section class="container">
         <div class="box" *ngIf="menuItem === 'pipes'">
           <h6>Chapter 7 Pipes</h6>
@@ -434,6 +438,93 @@
         </div>
       </section>
 
+      <!--ngSubmit -->
+      <section>
+        <div class="box" *ngIf="menuItem === 'ngSubmit'">
+
+          <p>To handle form submission, you use the (ngSubmit) event binding on the form element:</p>
+
+          <form (ngSubmit)="onSubmit($event)">
+
+            <!-- Form controls go here -->
+            <div>
+              <label class="form-label" for="nameInput">Name:</label>
+              <input class="form-control" type="text" id="nameInput" [(ngModel)]="formName" name="name" required>
+            </div>
+             <div>
+              <label class="form-label" for="emailInput">Email:</label>
+              <input class="form-control" type="email" id="emailInput" [(ngModel)]="formEmail" name="email" required>
+            </div>
+            <div>
+              <label class="form-label" for="messageInput">Message:</label>
+              <textarea class="form-control" id="messageInput" [(ngModel)]="formMessage" name="message" required></textarea>
+            </div>
+            <button class="btn btn-primary mt-5" type="submit">Submit</button>
+          </form>
+
+        </div>
+
+        <div class="box" *ngIf="menuItem === 'inputValidation'">
+          <p>Adding Validation Attributes to a Form</p>
+
+          <h6>Common html5 validation Attributes</h6>
+
+          <div class="d-flex flex-start flex-column">
+            <p><strong>required:</strong> Specifies that the input field must be filled out before the form can be submitted.</p>
+            <p><strong>minlength: </strong>Specifies the minimum length of the input value.</p>
+            <p><strong>maxlength:</strong> Specifies the maximum length of the input value.</p>
+            <p><strong>pattern:</strong> Specifies a regular expression that the input value must match. This allows very precise format control, such as phone numbers or specific license plate patterns.</p>
+            <p><strong>type="email":</strong> Specifies that the input field should contain a valid email address. This triggers built-in email format validation.</p>
+            <p><strong>type="number":</strong> Specifies that the input field should contain a valid number. This trigger built-in number formatting validation.</p>
+            <p><strong>min:</strong> Specifies the minimum value for a number input.</p>
+            <p><strong>max:</strong> Specifies the maximum value for a number input.</p>
+          </div>
+
+          <form (ngSubmit)="onSubmit($event)">
+            <div class="mb-3">
+              <label for="nameInput" class="form-label">Name:</label>
+              <input class="form-control" type="text" id="nameInput" [(ngModel)]="forName"  name="name"  required  minlength="3"  #nameInput="ngModel">
+
+              <!---->
+              <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" class="text-danger">
+                <div *ngIf="nameInput.errors?.required">Name is required.</div>
+                <div *ngIf="nameInput.errors?.minlength">Name must be at least 3 characters long.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">Email:</label>
+              <input class="form-control" type="email" id="emailInput" [(ngModel)]="formEmail" name="email" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="ageInput" class="form-label">Age:</label>
+              <input class="form-control" type="number" id="ageInput" [(ngModel)]="formAge" name="age" min="18" max="99">
+            </div>
+
+
+            <button class="btn btn-primary mt-5" type="submit">Submit</button>
+          </form>
+
+          <div class="d-flex flex-start flex-column mt-5">
+            <p><strong>valid:</strong> A boolean value indicating whether the form control is valid.</p>
+            <p><strong>invalid:</strong> A boolean value indicating whether the form control is invalid.</p>
+            <p><strong>errors:</strong> An object containing any validation errors. This object will have properties corresponding to each validation error. For example, if the input is required and empty, there will be a required property. If the input does not meet the minlength, there will be a minlength property.</p>
+            <p><strong>dirty:</strong> A boolean value indicating whether the control's value has been changed.</p>
+            <p><strong>touched:</strong> A boolean value indicating whether the control has been blurred (lost focus).</p>
+          </div>
+
+
+
+        </div>
+      </section>
+
+      <!--@Input()-->
+      <section>
+        <div class="box" *ngIf="menuItem==='inputDecorator'">
+
+        </div>
+      </section>
 
     </div>
   </div>
