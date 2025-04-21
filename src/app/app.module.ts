@@ -10,6 +10,8 @@ import { CounterComponent } from './counter/counter.component';
 import { ConnectApiComponent } from './connect-api/connect-api.component';
 import { ChildComponent } from './child/child.component';
 import { CParentComponent } from './c-parent/c-parent.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CParentComponent } from './c-parent/c-parent.component';
     CounterComponent,
     ConnectApiComponent,
     ChildComponent,
-    CParentComponent
+    CParentComponent,
+    TodoListComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,

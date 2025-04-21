@@ -1,0 +1,17 @@
+<div class="container d-flex flex-column align-items-center justify-content-center" style="    max-width: 500px;">
+  <h1 class="title">Todo List</h1>
+  <h6 class="text-white mt-4">Add New To-Do</h6>
+
+  <div class="input-group mt-2" style="width: 82%; height: 44px;">
+    <input [(ngModel)]="newTaskDescription" type="text"  placeholder="Add new task" style="color: #5e5e5e; font-size: large;" class="form-control" aria-label="Text input">
+    <button (click)="addTask()" class="btn btn-primary" type="button">Add Task</button>
+  </div>
+
+  <ul >
+    <li *ngFor="let item of todos">
+      {{ item }}
+    </li>
+  </ul>
+
+  <app-todo-item></app-todo-item>
+</div>
